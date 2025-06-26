@@ -11,14 +11,17 @@
 
 ### Make token for access to GHCR:
 
-1. Generate the Fine-Grained PAT
-Go to https://github.com/settings/personal-access-tokens → Fine-grained tokens
+A. Generate the Fine-Grained PAT (only works if you select the repo with the container registry)
 
-Repository access: Select the specific repository where the image lives.
-Permissions:
-Packages → ✅ Read access
-Contents → ✅ (optional if cloning is needed)
-🔐 This token can now access GHCR images built from that one repo.
+1. Go to https://github.com/settings/personal-access-tokens → Fine-grained tokens
+
+2. Repository access: Select the specific repository where the image lives.
+  Permissions:
+    Packages → ✅ Read access
+    Contents → ✅ (optional if cloning is needed)
+  🔐 This token can now access GHCR images built from that one repo.
+
+B. Use a classic token, with packages:read and repo 
 
 ### Make token for CoolProp main repo:
 
