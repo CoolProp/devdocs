@@ -10,16 +10,13 @@ jobs:
     
     container:
       image: ghcr.io/coolprop/coolprop_docs_02_builder:dev
-      # options: --user 1001 --group 1001
-      credentials:
-         username: ${{ github.actor }}
-         password: ${{ secrets.GITHUB_TOKEN }}
          
     steps: 
-    - uses: actions/checkout@v4.2.2
-      with:
-        
-        submodules: recursive
+    - name: Clone main repo at specific commit
+        run: |
+          git clone https://x-access-token:${{ secrets.REPO_A_PAT }}@github.com/${{ github.event.client_payload.repo }} repo-a
+          cd repo-a
+          git checkout --recursive --shallow-submodules ${{ github.event.client_payload.sha }}
     
     - uses: actions/cache@v4
       if: ${{ !env.ACT }} # skip during local actions testing
