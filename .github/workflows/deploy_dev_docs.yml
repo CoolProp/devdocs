@@ -22,11 +22,10 @@ jobs:
         password: ${{ secrets.GHCR_PAT }}
          
     steps: 
-    - name: Clone main repo at specific commit
-      run: |
-        echo "Triggered by ${{ github.event.client_payload.repo }} at ${{ github.event.client_payload.ref }}"
-        git clone --recursive --shallow-submodules https://x-access-token:${{ secrets.DEVDOCS_COOLPROP_PAT }}@github.com/CoolProp/CoolProp
-        cd CoolProp
+    - uses: actions/checkout@v4.2.2
+      with:
+        repository: 'CoolProp/CoolProp'
+        submodules: recursive
     
     - uses: actions/cache@v4
       if: ${{ !env.ACT }} # skip during local actions testing
