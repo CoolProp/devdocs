@@ -12,8 +12,8 @@ jobs:
       image: ghcr.io/coolprop/coolprop_docs_02_builder:dev
       # options: --user 1001 --group 1001
       credentials:
-         username: ${{ github.actor }}
-         password: ${{ secrets.DEVDOCS_COOLPROP_PAT }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_PAT }}
          
     steps: 
     - name: Clone main repo at specific commit
