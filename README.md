@@ -9,6 +9,16 @@
     Contents → Read-only (or Read & Write if needed)
 4. Generate the token and copy it immediately (you won’t see it again).
 
+### Make token for access to GHCR:
+
+1. Generate the Fine-Grained PAT
+Go to https://github.com/settings/personal-access-tokens → Fine-grained tokens
+
+Repository access: Select the specific repository where the image lives.
+Permissions:
+Packages → ✅ Read access
+Contents → ✅ (optional if cloning is needed)
+🔐 This token can now access GHCR images built from that one repo.
 
 ### Make token for CoolProp main repo:
 
