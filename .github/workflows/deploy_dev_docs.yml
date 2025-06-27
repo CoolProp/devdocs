@@ -104,6 +104,7 @@ jobs:
       shell: bash
       run: |
         source activate docs
+        pip install pydata-sphinx-theme
         sphinx-apidoc -T -f -e -o apidoc ../wrappers/Python/CoolProp
         make html
         
