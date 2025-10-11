@@ -72,6 +72,7 @@ jobs:
         git config --global --add safe.directory $GITHUB_WORKSPACE
         echo "$(git rev-parse HEAD)" > dev/gitrevision.txt
         source activate docs
+        python dev/generate_headers.py
         pip -vv wheel .
         pip install -vvv --force-reinstall --ignore-installed --upgrade --no-index `ls *.whl`
         
