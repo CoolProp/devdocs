@@ -89,6 +89,7 @@ jobs:
       shell: bash
       run: |
         source activate docs
+        pip install pydata-sphinx-theme tqdm ninja
         echo "Calling: python -u __init__.py ${{ env.COOLPROP_EXPENSIVE }}"
         python -u __init__.py ${{ env.COOLPROP_EXPENSIVE }}
         
@@ -104,7 +105,6 @@ jobs:
       shell: bash
       run: |
         source activate docs
-        pip install pydata-sphinx-theme tqdm ninja
         sphinx-apidoc -T -f -e -o apidoc ../wrappers/Python/CoolProp
         make html
         
