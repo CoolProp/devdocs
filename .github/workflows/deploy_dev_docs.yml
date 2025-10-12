@@ -72,7 +72,6 @@ jobs:
         git config --global --add safe.directory $GITHUB_WORKSPACE
         echo "$(git rev-parse HEAD)" > dev/gitrevision.txt
         source activate docs
-        python dev/generate_headers.py
         pip -vv wheel .
         pip install -vvv --force-reinstall --ignore-installed --upgrade --no-index `ls *.whl`
         
@@ -105,7 +104,7 @@ jobs:
       shell: bash
       run: |
         source activate docs
-        pip install pydata-sphinx-theme tqdm
+        pip install pydata-sphinx-theme tqdm ninja
         sphinx-apidoc -T -f -e -o apidoc ../wrappers/Python/CoolProp
         make html
         
