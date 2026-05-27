@@ -89,7 +89,11 @@ jobs:
       shell: bash
       run: |
         source activate docs
-        pip install pydata-sphinx-theme tqdm ninja
+        # sphinx-design is in conda_environment.yml, but that env is baked into
+        # the prebuilt docs container; the image isn't rebuilt for PRs, so install
+        # it at runtime here (same escape hatch as the packages above) to unblock
+        # the build until the next docs image rebuild on master.
+        pip install pydata-sphinx-theme tqdm ninja sphinx-design
         echo "Calling: python -u __init__.py ${{ env.COOLPROP_EXPENSIVE }}"
         python -u __init__.py ${{ env.COOLPROP_EXPENSIVE }}
         
